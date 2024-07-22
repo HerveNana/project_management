@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Nouveau Projet{% endblock %}
+
+{% block content %}
+<h1>Créer un nouveau projet</h1>
+<form method="POST" action="{{ url_for('project.create') }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.name.label }}
+        {{ form.name() }}
+    </div>
+    <div>
+        {{ form.description.label }}
+        {{ form.description() }}
+    </div>
+    <div>
+        {{ form.start_date.label }}
+        {{ form.start_date() }}
+    </div>
+    <div>
+        {{ form.end_date.label }}
+        {{ form.end_date() }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}

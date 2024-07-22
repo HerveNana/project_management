@@ -1,0 +1,40 @@
+# requirements.txt
+
+# Flask - Le micro-framework web utilisé comme base de l'application
+Flask==2.1.0
+
+# Extensions Flask
+Flask-SQLAlchemy==2.5.1  # ORM pour la gestion de la base de données
+Flask-Migrate==3.1.0     # Gestion des migrations de base de données
+Flask-Login==0.5.0       # Gestion de l'authentification des utilisateurs
+Flask-WTF==1.0.0         # Intégration de WTForms pour la gestion des formulaires
+Flask-Mail==0.9.1        # Pour l'envoi d'emails (si nécessaire)
+
+# Base de données
+psycopg2-binary==2.9.3   # Pilote PostgreSQL pour Python
+
+# Sécurité
+Werkzeug==2.0.2          # Utilitaires web, inclut la gestion des mots de passe
+python-dotenv==0.19.2    # Chargement des variables d'environnement depuis un fichier .env
+
+# Outils de développement et de test
+pytest==7.1.2            # Framework de test
+coverage==6.2            # Mesure de la couverture de code
+flake8==4.0.1            # Linter pour vérifier la qualité du code
+
+# Gestion des dates
+python-dateutil==2.8.2   # Utilitaires pour la manipulation des dates
+
+# Pour le diagramme de Gantt (si vous utilisez une bibliothèque Python)
+# Remarque : si vous utilisez une bibliothèque JavaScript, elle ne sera pas listée ici
+# gantt==0.6.0           # Décommentez si vous utilisez une bibliothèque Python pour Gantt
+
+# Autres dépendances utiles
+Pillow==9.0.1            # Traitement d'images (si nécessaire pour les avatars, etc.)
+requests==2.27.1         # Pour faire des requêtes HTTP (si nécessaire pour des intégrations)
+
+# Serveur WSGI pour le déploiement
+gunicorn==20.1.0         # Serveur WSGI pour le déploiement en production
+
+# Gestion des tâches asynchrones (si nécessaire)
+# celery==5.2.3          # Décommentez si vous implémentez des tâches asynchrones

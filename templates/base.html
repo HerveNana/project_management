@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestion de Projet{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Accueil</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('project.list_projects') }}">Projets</a></li>
+                    <li><a href="{{ url_for('user.profile') }}">Profil</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.login') }}">Connexion</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">Inscription</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} Gestion de Projet. Tous droits réservés.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

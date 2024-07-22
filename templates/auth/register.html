@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+<h1>Inscription</h1>
+<form method="POST" action="{{ url_for('auth.register') }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.username.label }}
+        {{ form.username() }}
+    </div>
+    <div>
+        {{ form.email.label }}
+        {{ form.email() }}
+    </div>
+    <div>
+        {{ form.password.label }}
+        {{ form.password() }}
+    </div>
+    <div>
+        {{ form.password2.label }}
+        {{ form.password2() }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+<p>Déjà un compte ? <a href="{{ url_for('auth.login') }}">Se connecter</a></p>
+{% endblock %}

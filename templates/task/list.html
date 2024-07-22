@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Tâches - {{ project.name }}{% endblock %}
+
+{% block content %}
+<h1>Tâches pour {{ project.name }}</h1>
+<a href="{{ url_for('task.create', project_id=project.id) }}" class="btn">Nouvelle Tâche</a>
+<ul class="task-list">
+    {% for task in tasks %}
+    <li>
+        <a href="{{ url_for('task.detail', task_id=task.id) }}">{{ task.name }}</a>
+        <span>{{ task.status }}</span>
+    </li>
+    {% else %}
+    <li>Aucune tâche pour ce projet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+/* gantt.css - Styles spécifiques pour le diagramme de Gantt */
+
+#gantt-container {
+    width: 100%;
+    height: 500px; /* Ajustez selon vos besoins */
+}
+
+/* Personnalisation des barres de tâches */
+.gantt_task_line {
+    background-color: #3498db;
+    border-color: #2980b9;
+}
+
+/* Personnalisation des liens entre tâches */
+.gantt_task_link .gantt_line_wrapper div {
+    background-color: #2c3e50;
+}
+
+/* Personnalisation de l'en-tête du diagramme */
+.gantt_grid_head_cell,
+.gantt_grid_scale,
+.gantt_grid_column_resize_wrap {
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
+/* Personnalisation des lignes du diagramme */
+.gantt_task_row.odd {
+    background-color: #f9f9f9;
+}

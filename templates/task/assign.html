@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Assigner {{ task.name }}{% endblock %}
+
+{% block content %}
+<h1>Assigner {{ task.name }}</h1>
+<form method="POST" action="{{ url_for('task.assign', task_id=task.id) }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.user.label }}
+        {{ form.user() }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}

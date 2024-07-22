@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Tableau Kanban - {{ project.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/kanban.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Tableau Kanban - {{ project.name }}</h1>
+<div id="kanban-board">
+    <div class="kanban-column" id="todo">
+        <h2>À faire</h2>
+        <div class="kanban-items" data-status="todo"></div>
+    </div>
+    <div class="kanban-column" id="in-progress">
+        <h2>En cours</h2>
+        <div class="kanban-items" data-status="in_progress"></div>
+    </div>
+    <div class="kanban-column" id="done">
+        <h2>Terminé</h2>
+        <div class="kanban-items" data-status="done"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/kanban.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        initKanban({{ project.id }});
+    });
+</script>
+{% endblock %}

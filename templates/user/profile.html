@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Profil de {{ user.username }}{% endblock %}
+
+{% block content %}
+<h1>Profil de {{ user.username }}</h1>
+<p>Email : {{ user.email }}</p>
+
+<h2>Projets</h2>
+<ul>
+    {% for project in user.projects %}
+    <li><a href="{{ url_for('project.detail', project_id=project.id) }}">{{ project.name }}</a></li>
+    {% else %}
+    <li>Aucun projet.</li>
+    {% endfor %}
+</ul>
+
+<h2>Tâches assignées</h2>
+<ul>
+    {% for task in user.tasks %}
+    <li><a href="{{ url_for('task.detail', task_id=task.id) }}">{{ task.name }}</a> ({{ task.project.name }})</li>
+    {% else %}
+    <li>Aucune tâche assignée.</li>
+    {% endfor %}
+</ul>
+
+{% if current_user.id == user.id %}
+<a href="{{ url_for('user.edit_profile') }}" class="btn">Modifier le profil</a>
+{% endif %}
+
+{% if current_user.is_admin %}
+<h2>Actions administratives</h2>
+<form method="POST" action="{{ url_for('user.toggle_admin', user_id=user.id) }}">
+    <input type="submit" value="{% if user.is_admin %}Retirer les droits d'administrateur{% else %}Donner les droits d'administrateur{% endif %}" class="btn">
+</form>
+{% endif %}
+{% endblock %}

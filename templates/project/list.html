@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Mes Projets{% endblock %}
+
+{% block content %}
+<h1>Mes Projets</h1>
+<a href="{{ url_for('project.create') }}" class="btn">Nouveau Projet</a>
+<ul class="project-list">
+    {% for project in projects %}
+    <li>
+        <a href="{{ url_for('project.detail', project_id=project.id) }}">{{ project.name }}</a>
+        <span>{{ project.start_date.strftime('%d/%m/%Y') }} - {{ project.end_date.strftime('%d/%m/%Y') }}</span>
+    </li>
+    {% else %}
+    <li>Aucun projet pour le moment.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ task.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ task.name }}</h1>
+<p>{{ task.description }}</p>
+<p>Statut : {{ task.status }}</p>
+<p>Date de début : {{ task.start_date.strftime('%d/%m/%Y') }}</p>
+<p>Date de fin : {{ task.end_date.strftime('%d/%m/%Y') }}</p>
+<p>Assignée à : {{ task.assigned_to.username if task.assigned_to else 'Non assignée' }}</p>
+
+<a href="{{ url_for('task.edit', task_id=task.id) }}" class="btn">Modifier</a>
+<a href="{{ url_for('task.assign', task_id=task.id) }}" class="btn">Assigner</a>
+
+<h2>Dépendances</h2>
+<ul>
+    {% for dep in task.dependencies %}
+    <li>{{ dep.dependency.name }}</li>
+    {% else %}
+    <li>Aucune dépendance</li>
+    {% endfor %}
+</ul>
+{% endblock %}
